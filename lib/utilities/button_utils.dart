@@ -13,10 +13,12 @@ class RegisterLoginButton {
   Container mainButton() {
     return Container(
       margin: EdgeInsets.all(40),
+      //decoration: BoxDecoration(),
       child: OutlinedButton(
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
-          backgroundColor: Colors.purple[100],
+          padding: EdgeInsets.symmetric(horizontal: 70),
+          backgroundColor: Colors.purple[100],   
         ), 
         child: Text(
           btnText,
@@ -24,6 +26,18 @@ class RegisterLoginButton {
             fontWeight: FontWeight.bold,
             color: Colors.black
           ),
+        ),
+      ),
+    );
+  }
+
+  TextButton registerTextButton() {
+    return TextButton(
+      onPressed: onPressed, 
+      child: Text(
+        btnText,
+        style: TextStyle(
+          color: Colors.black,
         ),
       ),
     );

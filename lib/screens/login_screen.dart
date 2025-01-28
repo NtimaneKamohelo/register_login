@@ -38,12 +38,35 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: 'Password'
             ).passwordTextField(),
 
+            //Forgot Password
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(right: 14),
+                  child: RegisterLoginButton(
+                    onPressed: () {  }, 
+                    btnText: 'Forgot Password?').registerTextButton(),
+                )
+              ],
+            ),
+
+            //Login Button
             RegisterLoginButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(RegisterScreen.id);
               } , 
               btnText: 'LOGIN'
-            ).mainButton()
+            ).mainButton(),
+
+
+            const SizedBox(),
+            RegisterLoginButton(
+              onPressed: () {  }, 
+              btnText: 'Do you have an account? Register'
+
+            ).registerTextButton(),
+
 
             
           ],

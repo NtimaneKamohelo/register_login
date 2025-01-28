@@ -20,7 +20,22 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Center(
         child: Column(
           children: [
-            TextFieldUtils().mainTextField(),
+
+            //Username-email
+            TextFieldUtils(
+              prefixIcon: Icon(Icons.person),
+              hintText: 'Username', 
+              suffixIcon: Icon(Icons.abc)
+            ).usernameTextField(),
+
+            //Password
+            TextFieldUtils(
+              prefixIcon: Icon(Icons.lock),
+              suffixIcon: Icon(Icons.remove_red_eye),
+              hintText: 'Password'
+            ).passwordTextField(),
+
+
             
           ],
         

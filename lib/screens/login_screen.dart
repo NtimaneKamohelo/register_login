@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:register_login/screens/register_screen.dart';
+import 'package:register_login/utilities/button_utils.dart';
 
 import '../utilities/textfield_utils.dart';
 
@@ -19,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 
             //Username-email
@@ -35,6 +38,12 @@ class _LoginScreenState extends State<LoginScreen> {
               hintText: 'Password'
             ).passwordTextField(),
 
+            RegisterLoginButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(RegisterScreen.id);
+              } , 
+              btnText: 'LOGIN'
+            ).mainButton()
 
             
           ],

@@ -59,6 +59,18 @@ class _LoginScreenState extends State<LoginScreen> {
               btnText: 'LOGIN'
             ).mainButton(),
 
+            //Google login button
+            RegisterLoginButton(
+              onPressed: () {}, 
+              btnText: 'Login using Google'
+            ).mediaButton(const Icon(Icons.person)),
+
+            //FaceBook Login Button
+            RegisterLoginButton(
+              onPressed: () {}, 
+              btnText: 'Login using Facebook'
+            ).mediaButton(const Icon(Icons.group)),
+
 
             const SizedBox(),
             RegisterLoginButton(

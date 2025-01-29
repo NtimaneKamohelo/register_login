@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 
 class TextFieldUtils {
   Widget prefixIcon;
-   Widget suffixIcon;
+  Widget suffixIcon;
   final String hintText;
 
   TextFieldUtils({

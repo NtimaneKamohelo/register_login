@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       //Routes
       routes: {
         RegisterScreen.id: (context) => RegisterScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
       },
     );
   }

@@ -47,32 +47,35 @@ class RegisterLoginButton {
   }
 
   //Social media login
-  Container mediaButton(Icon prefixIcon) {
+  Container mediaButton(String image) {
     return Container(
       margin: EdgeInsets.only(top: 15, left: 40, right: 40),
       //decoration: BoxDecoration(),
-      child: ElevatedButton(
+      child: ElevatedButton.icon(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(horizontal: 70),
+          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           backgroundColor: Colors.grey[100],   
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10)
           )
         ), 
+        //Display google asset image
+        icon: Image.asset(
+          image, 
+          width: 24,
+          height: 24,
+        ),
       
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            prefixIcon,
-            Text(
-              btnText,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black
-              ),
-            ),
-          ],
+        label: Flexible(
+          child: Text(
+                btnText,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black
+                ),
+                overflow: TextOverflow.ellipsis,
+          ),
         ),
       ),
     );

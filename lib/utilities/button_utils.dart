@@ -67,15 +67,13 @@ class RegisterLoginButton {
           height: 24,
         ),
       
-        label: Flexible(
-          child: Text(
-                btnText,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black
-                ),
-                overflow: TextOverflow.ellipsis,
-          ),
+        label: Text(
+              btnText,
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.black
+              ),
+              //overflow: TextOverflow.ellipsis,
         ),
       ),
     );

@@ -80,10 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Navigator.of(context).pushNamed(RegisterScreen.id);
                  }, 
                 btnText: 'Don\'t you have an account? Register'
-              ).registerTextButton(),
-        
-        
-              
+              ).registerTextButton(),  
             ],
           
           ),

@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           color: Colors.purple[100],
-        ),),
+        ),
+      ),
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
 

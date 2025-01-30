@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "784837777227",
+    "project_id": "register-login-boilerplate",
+    "storage_bucket": "register-login-boilerplate.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784837777227:android:3a61cbe9d54d49e2a9bace",
+        "android_client_info": {
+          "package_name": "com.example.register_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP1AH8xdwDngkaTmYcvMLybDiK8IUgUVs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

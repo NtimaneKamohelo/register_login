@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:register_login/screens/register_screen.dart';
-import 'package:register_login/utilities/button_utils.dart';
+import 'package:register_login/utilities_widgets/button_utils.dart';
 
-import '../utilities/textfield_utils.dart';
+import '../utilities_widgets/textfield_utils.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,6 +14,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  //For controllers
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
@@ -31,15 +34,17 @@ class _LoginScreenState extends State<LoginScreen> {
               //Username-email
               TextFieldUtils(
                 prefixIcon: Icon(Icons.person),
-                hintText: 'Username', 
-                suffixIcon: Icon(Icons.abc)
+                hintText: 'Email', 
+                suffixIcon: Icon(Icons.abc), 
+                textEditingController: emailController,
               ).usernameTextField(),
         
               //Password
               TextFieldUtils(
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: Icon(Icons.remove_red_eye),
-                hintText: 'Password'
+                hintText: 'Password', 
+                textEditingController: passwordController,
               ).passwordTextField(),
         
               //Forgot Password

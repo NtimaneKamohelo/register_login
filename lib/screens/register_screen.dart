@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:register_login/Services/authentication.dart';
+import 'package:register_login/screens/home_screen.dart';
 import 'package:register_login/screens/login_screen.dart';
+import 'package:register_login/utilities_widgets/Snack_bar.dart';
 
-import '../utilities/button_utils.dart';
-import '../utilities/textfield_utils.dart';
+import '../utilities_widgets/button_utils.dart';
+import '../utilities_widgets/textfield_utils.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -14,6 +17,40 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  //For Controller
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController(); 
+  //final TextEditingController confirmPasswordController = TextEditingController(); 
+
+  bool isLoading = false;
+
+  void registerUser() async {
+    String res = await AuthServices().registerUser(
+      email: emailController.text, 
+      password: passwordController.text
+    );
+    //If registering is successful, User has been created and navigate to the next Screen
+    //Otherwise show the error message
+    if(res == "Success") {
+      setState(() {
+        isLoading = true;
+      });
+      //Navigate to the nex Screen
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
+        ), 
+      );
+    }else {
+      setState(() {
+        isLoading = false;
+      });
+      ///Show error message
+      showSnackBar(context, res);
+    }
+
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,29 +68,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
               //Username-email
               TextFieldUtils(
                 prefixIcon: Icon(Icons.person),
-                hintText: 'Username', 
-                suffixIcon: Icon(Icons.abc)
+                hintText: 'Email', 
+                suffixIcon: Icon(Icons.abc), 
+                textEditingController: emailController,
               ).usernameTextField(),
         
               //Password
               TextFieldUtils(
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: Icon(Icons.remove_red_eye),
-                hintText: 'Password'
+                hintText: 'Password', 
+                isPass: true,
+                textEditingController: passwordController,
               ).passwordTextField(),
 
               // confirm Password
-              TextFieldUtils(
+              /**TextFieldUtils(
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: Icon(Icons.remove_red_eye),
-                hintText: 'Confirm Password'
-              ).passwordTextField(),
+                hintText: 'Confirm Password', 
+                textEditingController: confirmPasswordController,
+              ).passwordTextField(),*/
         
-    
-        
-              //Login Button
+              //Register Button
               RegisterLoginButton(
-                onPressed: () { } , 
+                onPressed: registerUser, 
                 btnText: 'Register'
               ).mainButton(),
         

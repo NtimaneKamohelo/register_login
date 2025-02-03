@@ -13,6 +13,8 @@ class RegisterLoginButton {
     //required this.prefixIcon
   });
 
+  
+
   Container mainButton() {
     return Container(
       margin: EdgeInsets.all(40),

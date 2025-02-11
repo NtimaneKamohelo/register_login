@@ -21,8 +21,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController(); 
   //final TextEditingController confirmPasswordController = TextEditingController(); 
-
   bool isLoading = false;
+
+  void dispose() {
+    super.dispose;
+    emailController.dispose();
+    passwordController.dispose();
+  }
 
   void registerUser() async {
     String res = await AuthServices().registerUser(

@@ -48,6 +48,14 @@ class RegisterLoginButton {
     );
   }
 
+  Container MyButton() {
+    return Container(
+      child: ElevatedButton(
+        onPressed: onPressed, 
+        child: Text(btnText)),
+    );
+  }
+
   //Social media login
   Container mediaButton(String image) {
     return Container(

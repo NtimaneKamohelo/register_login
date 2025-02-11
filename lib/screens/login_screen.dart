@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:register_login/Services/authentication.dart';
+import 'package:register_login/screens/home_screen.dart';
 import 'package:register_login/screens/register_screen.dart';
+import 'package:register_login/utilities_widgets/Snack_bar.dart';
 import 'package:register_login/utilities_widgets/button_utils.dart';
 
 import '../utilities_widgets/textfield_utils.dart';
@@ -17,6 +20,42 @@ class _LoginScreenState extends State<LoginScreen> {
   //For controllers
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+
+  @override
+  void dispose() {
+    super.dispose;
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  void loginUsers() async {
+    String res = await AuthServices().loginUser(
+      email: emailController.text, 
+      password: passwordController.text
+    );
+    //If login is successful, User has been created and navigate to the next Screen
+    //Otherwise show the error message
+    if(res == "Success") {
+      setState(() {
+        isLoading = true;
+      });
+      //Navigate to the nex Screen
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+        ), 
+      );
+    }else {
+      setState(() {
+        isLoading = false;
+      });
+      ///Show error message
+      showSnackBar(context, res);
+    }
+
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
@@ -44,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 prefixIcon: Icon(Icons.lock),
                 suffixIcon: Icon(Icons.remove_red_eye),
                 hintText: 'Password', 
+                isPass: true,
                 textEditingController: passwordController,
               ).passwordTextField(),
         
@@ -62,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
         
               //Login Button
               RegisterLoginButton(
-                onPressed: () { } , 
+                onPressed: loginUsers, 
                 btnText: 'LOGIN'
               ).mainButton(),
         

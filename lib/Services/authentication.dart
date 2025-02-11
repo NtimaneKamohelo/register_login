@@ -33,9 +33,38 @@ class AuthServices {
      
 
     } catch (e) {
-      print(e.toString());
+      return e.toString();
     }
     return  res;
   }//Register authentication ends here
+
+  //For login authentication
+  Future<String> loginUser({
+    required String email,
+    required String password,
+  }) async {
+    String res = "Some error occurred";
+    try {
+      if(email.isNotEmpty || password.isNotEmpty) {
+        //login user with email and password
+        await _auth.signInWithEmailAndPassword(
+          email: email, 
+          password: password
+        );
+        res = "Success";
+      }
+      else {
+        res = "Please enter all the fields";
+      }
+    } catch(e) {
+      return e.toString();
+    }
+    return res;
+  }
+
+  //For logout
+  Future<void> signOut() async {
+    await _auth.signOut();
+  }
 }
 

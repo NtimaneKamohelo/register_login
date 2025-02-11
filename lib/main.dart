@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:register_login/screens/home_screen.dart';
@@ -23,8 +24,18 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-
+      //When we restart the application it requests that we login over and over
+      //Below we allow it to keep the user signed in until they logout
+      home: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(), 
+        builder: (context, snapshot){
+          if(snapshot.hasData){
+            return HomeScreen();
+          } else {
+            return LoginScreen();
+          }
+        }),
+      //LoginScreen()
       //Routes
       routes: {
         RegisterScreen.id: (context) => RegisterScreen(),

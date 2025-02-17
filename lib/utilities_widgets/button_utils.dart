@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RegisterLoginButton {
 
   final VoidCallback onPressed; //Function to handle button pressed
   final String btnText;
+  //Widget icon;
   //Widget prefixIcon;
    //Widget to define the buttons content
 
   RegisterLoginButton({
     required this.onPressed,
     required this.btnText,
+    //required this.icon,
     //required this.prefixIcon
   });
 
@@ -23,7 +26,8 @@ class RegisterLoginButton {
         onPressed: onPressed,
         style: OutlinedButton.styleFrom(
           padding: EdgeInsets.symmetric(horizontal: 70),
-          backgroundColor: Colors.purple[100],   
+          backgroundColor: Colors.purple[100],
+          minimumSize: Size(double.infinity, 50), 
         ), 
         child: Text(
           btnText,
@@ -57,7 +61,7 @@ class RegisterLoginButton {
   }
 
   //Social media login
-  Container mediaButton(String image) {
+  Container mediaButton(Widget icon) {
     return Container(
       margin: EdgeInsets.only(top: 15, left: 40, right: 40),
       //decoration: BoxDecoration(),
@@ -68,14 +72,17 @@ class RegisterLoginButton {
           backgroundColor: Colors.grey[100],   
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10)
-          )
+          ),
+          minimumSize: Size(double.infinity, 50),
         ), 
         //Display google asset image
-        icon: Image.asset(
+        /*icon: Image.asset(
           image, 
           width: 24,
           height: 24,
-        ),
+        ),*/
+
+        icon: icon,
       
         label: Text(
               btnText,

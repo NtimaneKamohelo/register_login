@@ -4,6 +4,7 @@ import 'package:register_login/screens/home_screen.dart';
 import 'package:register_login/screens/register_screen.dart';
 import 'package:register_login/utilities_widgets/Snack_bar.dart';
 import 'package:register_login/utilities_widgets/button_utils.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../utilities_widgets/textfield_utils.dart';
 
@@ -109,14 +110,15 @@ class _LoginScreenState extends State<LoginScreen> {
               //Google login button
               RegisterLoginButton(
                 onPressed: () {}, 
-                btnText: 'Login using Google'
-              ).mediaButton('assets/icons/google-login-icon.png'),
+                btnText: 'Login using Google',
+                
+              ).mediaButton(FaIcon(FontAwesomeIcons.google, color: Colors.red)),
         
               //FaceBook Login Button
               RegisterLoginButton(
                 onPressed: () {}, 
                 btnText: 'Login using Facebook'
-              ).mediaButton('assets/icons/facebook-login-icon.png'),
+              ).mediaButton(FaIcon(FontAwesomeIcons.facebook, color: Colors.blue)),
         
         
               const SizedBox(),

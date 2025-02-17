@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:register_login/Services/authentication.dart';
+import 'package:register_login/Services/google_signin.dart';
 import 'package:register_login/screens/home_screen.dart';
 import 'package:register_login/screens/login_screen.dart';
 import 'package:register_login/utilities_widgets/Snack_bar.dart';
@@ -103,15 +106,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
         
               //Google login button
               RegisterLoginButton(
-                onPressed: () {}, 
+                onPressed: () {
+                  final provider = 
+                    Provider.of<GoogleSigninProvider>(context, listen: false); 
+                  provider.googleLogin();
+                }, 
                 btnText: 'Register using Google'
-              ).mediaButton('assets/icons/google-login-icon.png'),
+              ).mediaButton(const FaIcon(FontAwesomeIcons.google, color: Colors.red)),
         
               //FaceBook Login Button
               RegisterLoginButton(
                 onPressed: () {}, 
                 btnText: 'Register using Facebook'
-              ).mediaButton('assets/icons/facebook-login-icon.png'),
+              ).mediaButton(const FaIcon(FontAwesomeIcons.facebook, color: Colors.blue)),
         
         
               const SizedBox(),

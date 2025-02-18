@@ -106,10 +106,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
         
               //Google login button
               RegisterLoginButton(
-                onPressed: () {
+                onPressed: () async {
                   final provider = 
                     Provider.of<GoogleSigninProvider>(context, listen: false); 
                   provider.googleLogin();
+                  if (provider.user != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(),
+                      ), 
+                    );
+                  } else {
+                    // Show error message if sign-in fails
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Sign-in failed. Please try again.")),
+                    );
+                  }
+                  
                 }, 
                 btnText: 'Register using Google'
               ).mediaButton(const FaIcon(FontAwesomeIcons.google, color: Colors.red)),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthServices {
   //For storing data in cloud firestore
@@ -64,6 +65,7 @@ class AuthServices {
 
   //For logout
   Future<void> signOut() async {
+    //await googleSignIn.disconnect();
     await _auth.signOut();
   }
 }

@@ -42,9 +42,9 @@ class _LoginScreenState extends State<LoginScreen> {
         isLoading = true;
       });
       //Navigate to the nex Screen
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(
-            builder: (context) => HomeScreen(),
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomeScreen(),
         ), 
       );
     }else {

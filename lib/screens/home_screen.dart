@@ -12,30 +12,32 @@ class HomeScreen extends StatelessWidget {
   static String id = '/HomeScreen';
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!;
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      return Scaffold(
+        body: Center(
+          child: Text("No user is currently logged in"),
+        ),
+      );
+    }
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            /**const Text("Congratulations\nYou have successfully Login",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
-            ),*/
             CircleAvatar(
               radius: 40,
-              backgroundImage: NetworkImage(user.photoURL!),
+              backgroundImage: user.photoURL != null
+                ? NetworkImage(user.photoURL!)
+                : null,
             ),
             SizedBox(height: 8,),
             Text(
-              'Name: ' + user.displayName!,
+              'Name: ' + (user.displayName ?? 'Anonymous'),
             ),
             SizedBox(height: 8,),
             Text(
-              'email: ' + user.email!,
+              'email: ' + (user.email ?? 'No email'),
             ),
 
             //Log out

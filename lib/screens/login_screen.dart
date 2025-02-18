@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:register_login/Services/authentication.dart';
+import 'package:register_login/Services/google_signin.dart';
 import 'package:register_login/screens/home_screen.dart';
 import 'package:register_login/screens/register_screen.dart';
 import 'package:register_login/utilities_widgets/Snack_bar.dart';
@@ -25,9 +27,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
-    super.dispose;
     emailController.dispose();
     passwordController.dispose();
+    super.dispose;
   }
 
   void loginUsers() async {
@@ -41,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
         isLoading = true;
       });
-      //Navigate to the nex Screen
+      //Navigate to the next Screen
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => HomeScreen(),
@@ -109,7 +111,10 @@ class _LoginScreenState extends State<LoginScreen> {
         
               //Google login button
               RegisterLoginButton(
-                onPressed: () {}, 
+                onPressed: () {
+                  final provider = Provider.of<GoogleSigninProvider>(context, listen: false);
+                  provider.googleLogin(context);
+                }, 
                 btnText: 'Login using Google',
                 
               ).mediaButton(FaIcon(FontAwesomeIcons.google, color: Colors.red)),

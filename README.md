@@ -1,5 +1,8 @@
 # register-login
-A user must be able to register and login. (BoilerPlate)
+A user must be able to register and login.
+
+### How to run the application on your environment:
+-Once the application has been cloned RUN the following command on your terminal: Flutter pub get
 
 ## Login Screen UI
 ![alt text](image-1.png)
